@@ -42,3 +42,27 @@ def delete_product(request, pk):
     else:
         entry.delete()
         return redirect("index")
+
+
+def update_product(request, pk):
+    entry = get_object_or_404(Products, pk=pk)
+    if request.method == "GET":
+        form = ProductsForm(initial={
+            "product": entry.product,
+            "description": entry.description,
+            "category": entry.category,
+            "remainder": entry.remainder,
+            "price": entry.price
+        })
+        return render(request, "update.html", {"form": form})
+    else:
+        form = ProductsForm(data=request.POST)
+        if form.is_valid():
+            entry.product = form.cleaned_data.get("product")
+            entry.description = form.cleaned_data.get("description")
+            entry.category = form.cleaned_data.get("category")
+            entry.remainder = form.cleaned_data.get("remainder")
+            entry.price = form.cleaned_data.get("price")
+            entry.save()
+            return redirect("product_view", pk=entry.pk)
+        return render(request, "update.html", {"form": form})
