@@ -1,5 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 
+{% block nav %}
+     <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'delete_product' product.pk %}">Удалить товар</a>
+        </li>
+{% endblock %}
 {% block content %}
     <div class="card" style="width: 18rem;">
   <img src="#" class="card-img-top" alt="...">
@@ -12,4 +18,5 @@
       <strong>{{ product.price }} y.e</strong>
   </div>
 </div>
+     <a href="{% url "index" %}">На главную</a>
 {% endblock %}
