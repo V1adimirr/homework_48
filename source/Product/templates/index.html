@@ -8,6 +8,7 @@
 {% endblock %}
 {% block content %}
     {% for item in products %}
+        {% if item.remainder > 0 %}
         <br/>
          <div class="card text-center" style="width: 18rem;">
       <div class="card-body">
@@ -16,5 +17,6 @@
         <a href="{% url "product_view" item.pk %}" class="btn btn-secondary">К описанию</a>
       </div>
     </div><br/>
+        {% endif %}
     {% endfor %}
 {% endblock %}
