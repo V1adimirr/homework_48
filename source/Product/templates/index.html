@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for item in products %}
+        <br/>
+         <div class="card text-center" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.product }}</h5>
+        <p class="card-text">{{ item.price }}<br/>{{ item.get_category_display}}</p>
+        <a href="{% url "product_view" item.pk %}" class="btn btn-secondary">К описанию</a>
+      </div>
+    </div><br/>
+    {% endfor %}
+{% endblock %}
