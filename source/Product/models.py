@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 CATEGORY_CHOICES = [('other', 'Разное'), ('toys', 'Игрушки'), ('for home', 'Для дома'), ('present', 'Подарки'),
                     ('in car', 'В машину'), ('hobby', 'Хобби'), ('for garden', 'Для сада')]
@@ -19,3 +20,4 @@ class Products(models.Model):
         db_table = "Products"
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
+

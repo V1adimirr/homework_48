@@ -1,68 +1,45 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
 from Product.forms import ProductsForm
 from Product.models import Products
-from Product.validate import product_validate
 
 
-def index_view(request):
-    product = Products.objects.order_by("product", "category")
-    context = {"products": product}
-    return render(request, "index.html", context)
+class IndexView(ListView):
+    template_name = "index.html"
+    model = Products
+    context_object_name = 'products'
 
 
-def product_view(request, **kwargs):
-    product_pk = kwargs.get("pk")
-    product = get_object_or_404(Products, pk=product_pk)
-    return render(request, 'product_view.html', {"product": product})
+class ProductView(DetailView):
+    template_name = "product_view.html"
+    model = Products
+    context_object_name = 'product'
 
 
-def create_product(request):
-    if request.method == "GET":
-        form = ProductsForm()
-        return render(request, "product_create.html", {'form': form})
-    else:
-        form = ProductsForm(data=request.POST)
-        if form.is_valid():
-            product = form.cleaned_data.get('product')
-            description = form.cleaned_data.get('description')
-            category = form.cleaned_data.get('category')
-            remainder = form.cleaned_data.get('remainder')
-            price = form.cleaned_data.get('price')
-            new_entry = Products.objects.create(product=product, description=description, category=category,
-                                                remainder=remainder, price=price)
-            return redirect("product_view", pk=new_entry.pk)
-        return render(request, 'product_create.html', {'form': form})
+class CreateProduct(CreateView):
+    form_class = ProductsForm
+    template_name = "product_create.html"
+    model = Products
+
+    def get_success_url(self):
+        return reverse('product_view', kwargs={'pk': self.object.pk})
 
 
-def delete_product(request, pk):
-    entry = get_object_or_404(Products, pk=pk)
-    if request.method == "GET":
-        return render(request, "delete.html", {"entry": entry})
-    else:
-        entry.delete()
-        return redirect("index")
+class DeleteProduct(DeleteView):
+    model = Products
+    template_name = "delete.html"
+    context_object_name = 'entry'
+
+    def get_success_url(self):
+        return reverse('index')
 
 
-def update_product(request, pk):
-    entry = get_object_or_404(Products, pk=pk)
-    if request.method == "GET":
-        form = ProductsForm(initial={
-            "product": entry.product,
-            "description": entry.description,
-            "category": entry.category,
-            "remainder": entry.remainder,
-            "price": entry.price
-        })
-        return render(request, "update.html", {"form": form})
-    else:
-        form = ProductsForm(data=request.POST)
-        if form.is_valid():
-            entry.product = form.cleaned_data.get("product")
-            entry.description = form.cleaned_data.get("description")
-            entry.category = form.cleaned_data.get("category")
-            entry.remainder = form.cleaned_data.get("remainder")
-            entry.price = form.cleaned_data.get("price")
-            entry.save()
-            return redirect("product_view", pk=entry.pk)
-        return render(request, "update.html", {"form": form})
+class UpdateProduct(UpdateView):
+    form_class = ProductsForm
+    template_name = "update.html"
+    model = Products
+
+    def get_success_url(self):
+        return reverse('product_view', kwargs={'pk': self.object.pk})
