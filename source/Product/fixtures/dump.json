@@ -419,7 +419,7 @@ File tracking disabled
         "product": "Горшок цветочный",
         "description": "Материал: керамика\r\nЦвет: Белый\r\nВысота: 35см\r\nДиаметр: 20см",
         "category": "for garden",
-        "remainder": 5,
+        "remainder": 4,
         "price": "1200.00"
     }
 },
@@ -487,6 +487,28 @@ File tracking disabled
         "category": "for garden",
         "remainder": 17,
         "price": "480.00"
+    }
+},
+{
+    "model": "Product.products",
+    "pk": 16,
+    "fields": {
+        "product": "Кольцо бетонное",
+        "description": "Кольцо бетонное.\r\nдиаметр 100см",
+        "category": "for garden",
+        "remainder": 7,
+        "price": "1290.00"
+    }
+},
+{
+    "model": "Product.products",
+    "pk": 17,
+    "fields": {
+        "product": "Жидкость тормозная",
+        "description": "Жидкость тормозная.\r\nDOT4",
+        "category": "in car",
+        "remainder": 7,
+        "price": "620.00"
     }
 }
 ]

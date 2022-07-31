@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse
 
 CATEGORY_CHOICES = [('other', 'Разное'), ('toys', 'Игрушки'), ('for home', 'Для дома'), ('present', 'Подарки'),
                     ('in car', 'В машину'), ('hobby', 'Хобби'), ('for garden', 'Для сада')]

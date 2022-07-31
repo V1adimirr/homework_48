@@ -6,10 +6,14 @@
           <a class="nav-link active" aria-current="page" href="{% url 'create_product' %}">Добавить товар</a>
         </li>
 {% endblock %}
-{% block content %}
+{% block search %}
+    {% include "partial/search.html" %}
+{% endblock %}
+
+{% block content %}<br/>
+<div class="row">
     {% for item in products %}
-        {% if item.remainder > 0 %}
-        <br/>
+        {% if item.remainder > 0 %}<br/>
          <div class="card text-center" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{ item.product }}</h5>
@@ -19,4 +23,8 @@
     </div><br/>
         {% endif %}
     {% endfor %}
+    </div><br/>
+    {% if is_paginated %}
+        {% include "partial/pagination.html" %}
+    {% endif %}
 {% endblock %}
