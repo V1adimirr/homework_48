@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.deletion import CASCADE
 
 CATEGORY_CHOICES = [('other', 'Разное'), ('toys', 'Игрушки'), ('for home', 'Для дома'), ('present', 'Подарки'),
                     ('in car', 'В машину'), ('hobby', 'Хобби'), ('for garden', 'Для сада')]
@@ -20,3 +21,16 @@ class Products(models.Model):
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
 
+
+class Basket(models.Model):
+    item = models.ForeignKey("Product.Products", on_delete=CASCADE, null=True, blank=True,
+                             related_name="in_basket", verbose_name='Товар в корзине')
+    count = models.PositiveIntegerField(verbose_name="Товара в корзине")
+
+    def __str__(self):
+        return f"{self.id}, {self.item}, {self.count}"
+
+    class Meta:
+        db_table = "Basket"
+        verbose_name = "Корзина"
+        verbose_name_plural = "Корзина"

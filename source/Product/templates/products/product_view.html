@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "products/base.html" %}
 {% load static %}
 
 {% block nav %}
@@ -11,7 +11,7 @@
 {% endblock %}
 {% block content %}
     <div class="card" style="width: 18rem;">
-  <img src="#" class="card-img-top" alt="...">
+  <img src="#" class="d-block w-100" alt="...">
   <div class="card-body">
     <h3>{{ product.product }}</h3><br/>
       <p class="card-text">{{ product.description }}<br/>

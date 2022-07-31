@@ -9,11 +9,11 @@ from Product.models import Products
 
 
 class IndexView(ListView):
-    template_name = "index.html"
+    template_name = "products/index.html"
     model = Products
     context_object_name = 'products'
+    ordering = ['-category', '-product']
     paginate_by = 4
-    ordering = 'category', 'product'
 
     def get(self, request, *args, **kwargs):
         self.form = self.get_search_form()
@@ -42,14 +42,14 @@ class IndexView(ListView):
 
 
 class ProductView(DetailView):
-    template_name = "product_view.html"
+    template_name = "products/product_view.html"
     model = Products
     context_object_name = 'product'
 
 
 class CreateProduct(CreateView):
     form_class = ProductsForm
-    template_name = "product_create.html"
+    template_name = "products/product_create.html"
     model = Products
 
     def get_success_url(self):
@@ -58,7 +58,7 @@ class CreateProduct(CreateView):
 
 class DeleteProduct(DeleteView):
     model = Products
-    template_name = "product_delete.html"
+    template_name = "products/product_delete.html"
     context_object_name = 'entry'
 
     def get_success_url(self):
@@ -67,7 +67,7 @@ class DeleteProduct(DeleteView):
 
 class UpdateProduct(UpdateView):
     form_class = ProductsForm
-    template_name = "product_update.html"
+    template_name = "products/product_update.html"
     model = Products
 
     def get_success_url(self):
