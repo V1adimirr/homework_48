@@ -19,6 +19,7 @@
         <h5 class="card-title">{{ item.product }}</h5>
         <p class="card-text">{{ item.price }}<br/>{{ item.get_category_display}}</p>
         <a href="{% url "product_view" item.pk %}" class="btn btn-secondary">К описанию</a>
+          <a href="{% url 'product_add' item.pk %}" class="btn btn-secondary">В корзину</a>
       </div>
     </div><br/>
         {% endif %}

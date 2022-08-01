@@ -79,6 +79,45 @@ File tracking disabled
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2022-07-31T17:09:55.720Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "1",
+        "object_repr": "1, Горшок цветочный, 1200.00",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041e\\u0441\\u0442\\u0430\\u0442\\u043e\\u043a\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2022-07-31T17:34:12.277Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "1, 1, Горшок цветочный, 1200.00, 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2022-07-31T17:36:00.767Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "1, 1, Горшок цветочный, 1200.00, 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -331,11 +370,47 @@ File tracking disabled
     }
 },
 {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add Корзина",
+        "content_type": 8,
+        "codename": "add_basket"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change Корзина",
+        "content_type": 8,
+        "codename": "change_basket"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete Корзина",
+        "content_type": 8,
+        "codename": "delete_basket"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view Корзина",
+        "content_type": 8,
+        "codename": "view_basket"
+    }
+},
+{
     "model": "auth.user",
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$320000$m4oAnCCEQAuY7l0BZEGxkM$LLL/TDmDTzO3pasxJ0GmubSESOqX/vT54IJqw2MBOog=",
-        "last_login": "2022-07-04T15:13:31.858Z",
+        "last_login": "2022-07-31T17:09:43.128Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",
@@ -405,11 +480,27 @@ File tracking disabled
     }
 },
 {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "Product",
+        "model": "basket"
+    }
+},
+{
     "model": "sessions.session",
     "pk": "behdf88hzooh6ulapbg0bckpbhoyvbzg",
     "fields": {
         "session_data": ".eJxVjE0OwiAYBe_C2hB-pFCX7j0DefCBVA0kpV0Z726bdKHbNzPvzTzWpfi1p9lPxC5MstPvFhCfqe6AHqj3xmOryzwFviv8oJ3fGqXX9XD_Dgp62WpH5kwKAVaShIAWo01EKiKLHILU46CASCZbGwCZhyi2wOpklXFOss8XDNE4pA:1o8NlT:OZ0IQmwhfFcXRqmL2QhRE-Nh91qzeTO98aAisiofTjc",
         "expire_date": "2022-07-18T15:13:31.863Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "i8f3h1acg9smqyz66mmrme9f9uw1vneg",
+    "fields": {
+        "session_data": ".eJxVjE0OwiAYBe_C2hB-pFCX7j0DefCBVA0kpV0Z726bdKHbNzPvzTzWpfi1p9lPxC5MstPvFhCfqe6AHqj3xmOryzwFviv8oJ3fGqXX9XD_Dgp62WpH5kwKAVaShIAWo01EKiKLHILU46CASCZbGwCZhyi2wOpklXFOss8XDNE4pA:1oICRj:y1YBchRUuayy84xlNtWxU38aMFPhMsaBk3lVbAd44lQ",
+        "expire_date": "2022-08-14T17:09:43.133Z"
     }
 },
 {
@@ -509,6 +600,14 @@ File tracking disabled
         "category": "in car",
         "remainder": 7,
         "price": "620.00"
+    }
+},
+{
+    "model": "Product.basket",
+    "pk": 1,
+    "fields": {
+        "item": 1,
+        "count": 1
     }
 }
 ]

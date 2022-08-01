@@ -1,0 +1,16 @@
+{% extends "products/base.html" %}
+{% load static %}
+{% block content %}
+<form method="post">{% csrf_token %}
+     <div class="card" style="width: 18rem;">
+  <img src="#" class="d-block w-100" alt="...">
+  <div class="card-body">
+    <h3>{{ item.item.product }}</h3><br/>
+      <label><input type="number"   value="{{ item.count }}"></label><br/>
+      <p><strong>{{ item.item.price }} y.e</strong></p>
+      <p><a href="#" class="btn btn-secondary">Добавить</a></p>
+  </div>
+</div>
+     <a href="{% url "index" %}">На главную</a>
+</form>
+{% endblock %}
